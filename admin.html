@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Gatadwadi Panchayat</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar glass-card">
+        <div class="sidebar-logo">
+            <img src="../logo.png" alt="Logo">
+            <h2>Admin <span>Portal</span></h2>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="active"><span class="material-icons">dashboard</span> Dashboard</a>
+            <a href="#payments"><span class="material-icons">receipt_long</span> Payments</a>
+            <a href="#complaints"><span class="material-icons">support_agent</span> Complaints</a>
+            <a href="#certificates"><span class="material-icons">card_membership</span> Certificates</a>
+            <a href="#notices"><span class="material-icons">campaign</span> Notices</a>
+            <a href="index.html" class="back-link"><span class="material-icons">arrow_back</span> Back to Website</a>
+        </nav>
+
+        <div class="village-info-widget">
+            <h4>About Gatadwadi</h4>
+            <p>A distinct village in Walwa tehsil of Sangli district, Maharashtra.</p>
+            <div class="village-stats">
+                <div class="v-stat"><span>Population</span><strong>1,586+</strong></div>
+                <div class="v-stat"><span>Taluka</span><strong>Walwa</strong></div>
+                <div class="v-stat"><span>District</span><strong>Sangli</strong></div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <header class="admin-header">
+            <div>
+                <h1 class="page-title">Dashboard Overview</h1>
+                <p class="page-subtitle">Welcome back! Here's what's happening in Gatadwadi today.</p>
+            </div>
+
+            <div class="admin-profile">
+                <div class="avatar">
+                    <span class="material-icons">admin_panel_settings</span>
+                </div>
+                <div>
+                    <span class="admin-name">Sarpanch Office</span>
+                    <span class="admin-role">Super Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card glass-card">
+                <div class="stat-icon" style="background: rgba(104, 189, 98, 0.1); color: var(--button-green);">
+                    <span class="material-icons">account_balance_wallet</span>
+                </div>
+                <div class="stat-info">
+                    <p>Total Revenue Stored</p>
+                    <h3 id="statRevenue">₹ 0</h3>
+                </div>
+            </div>
+            <div class="stat-card glass-card">
+                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                    <span class="material-icons">receipt</span>
+                </div>
+                <div class="stat-info">
+                    <p>Total Payments</p>
+                    <h3 id="statPaymentsCount">0</h3>
+                </div>
+            </div>
+            <div class="stat-card glass-card">
+                <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                    <span class="material-icons">warning</span>
+                </div>
+                <div class="stat-info">
+                    <p>Pending Complaints</p>
+                    <h3 id="statPendingComplaints">0</h3>
+                </div>
+            </div>
+            <div class="stat-card glass-card">
+                <div class="stat-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
+                    <span class="material-icons">description</span>
+                </div>
+                <div class="stat-info">
+                    <p>Approved Certificates</p>
+                    <h3 id="statApprovedCerts">0</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="chart-grid">
+            <div class="chart-panel glass-card">
+                <div class="panel-header">
+                    <h3>Revenue Collection Trend</h3>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-panel glass-card">
+                <div class="panel-header">
+                    <h3>Complaint Resolutions</h3>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="complaintsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Tables Layout -->
+        <div class="dashboard-grid">
+
+            <!-- Complaints Pipeline -->
+            <div class="dashboard-panel glass-card" id="complaints">
+                <div class="panel-header">
+                    <h3>Recent Complaints</h3>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <th>Date</th>
+                                <th>Resident Name</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintsTableBody">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Empty State -->
+                <div id="emptyComplaints" class="empty-state hidden">
+                    <span class="material-icons">assignment_turned_in</span>
+                    <p>No complaints right now!</p>
+                </div>
+            </div>
+
+            <!-- Recent Payments -->
+            <div class="dashboard-panel glass-card" id="payments">
+                <div class="panel-header">
+                    <h3>Latest Payments</h3>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Receipt ID</th>
+                                <th>Date</th>
+                                <th>Resident / House</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsTableBody">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Empty State -->
+                <div id="emptyPayments" class="empty-state hidden">
+                    <span class="material-icons">account_balance_wallet</span>
+                    <p>No payments recorded yet.</p>
+                </div>
+            </div>
+
+            <!-- Certificate Requests Pipeline -->
+            <div class="dashboard-panel glass-card" id="certificates">
+                <div class="panel-header">
+                    <h3>Certificate Approvals</h3>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Ref ID</th>
+                                <th>Date</th>
+                                <th>Applicant Name</th>
+                                <th>Certificate Type</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="certificatesTableBody">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Empty State -->
+                <div id="emptyCertificates" class="empty-state hidden">
+                    <span class="material-icons">card_membership</span>
+                    <p>No new certificate requests.</p>
+                </div>
+            </div>
+
+            <!-- Notice Manager -->
+            <div class="dashboard-panel glass-card" id="notices">
+                <div class="panel-header">
+                    <h3>Village Notices</h3>
+                </div>
+                <form id="addNoticeForm" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: stretch;">
+                    <input type="text" id="newNoticeText" placeholder="Enter new notice to publish..." required
+                        style="flex:1; padding:0.8rem 1.2rem; border-radius:8px; border:1px solid var(--border-light); outline:none; font-family: inherit; font-size: 0.95rem;">
+                    <button type="submit" class="submit-btn solid-btn-green"
+                        style="border-radius:8px; width:auto; text-shadow:none;">Publish</button>
+                </form>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Notice ID</th>
+                                <th>Date Published</th>
+                                <th>Message</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="noticesTableBody">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="emptyNotices" class="empty-state hidden">
+                    <span class="material-icons">campaign</span>
+                    <p>No notices published yet.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

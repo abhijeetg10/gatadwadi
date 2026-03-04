@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Digital Gatadwadi Gram Panchayat portal. Pay water bills, house taxes (ghar patti), and submit complaints easily online.">
+    <title>Gatadwadi Gram Panchayat | Digital Services</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header with Logo -->
+    <header class="glass-header">
+        <div class="logo-container">
+            <img src="../logo.png" alt="Gram Panchayat Logo" class="logo">
+            <h1 data-i18n="logoTitle">Gatadwadi <span>Panchayat</span></h1>
+        </div>
+        <nav>
+            <a href="#home" class="active" data-i18n="navHome">Home</a>
+            <a href="#services" data-i18n="navServices">Services</a>
+            <a href="#complaints" data-i18n="navComplaints">Complaints</a>
+        </nav>
+        <div class="nav-cta">
+            <a href="admin.html" class="primary-btn-small"
+                style="background: transparent; color: var(--button-green); border: 1px solid var(--button-green); margin-right: 10px;"
+                data-i18n="navAdmin">Admin Login</a>
+            <a href="#services" class="primary-btn-small" data-i18n="navPayDues">Pay Dues</a>
+        </div>
+        <div class="mobile-menu-btn">
+            <span class="material-icons">menu</span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in-up">
+            <h2 class="hero-title fade-in-up" style="animation-delay: 0.1s" data-i18n="heroTitle">Digital <span
+                    class="highlight" data-i18n="heroTitleHighlight">Governance</span> for a Better Village</h2>
+            <p class="hero-subtitle fade-in-up" style="animation-delay: 0.2s" data-i18n="heroSubtitle">Empowering
+                villagers with AI-driven,
+                transparent, and seamless online services. Pay your water bills, house tax (Ghar Patti), or submit
+                instant complaints with ease.</p>
+
+            <div class="language-selection-large fade-in-up" style="animation-delay: 0.25s">
+                <p class="lang-prompt" data-i18n="selectLanguageMsg">Choose your language / तुमची भाषा निवडा :</p>
+                <div class="lang-buttons">
+                    <button class="lang-btn" onclick="setLanguage('mr')" id="btn-lang-mr">मराठी</button>
+                    <button class="lang-btn" onclick="setLanguage('hi')" id="btn-lang-hi">हिंदी</button>
+                    <button class="lang-btn" onclick="setLanguage('en')" id="btn-lang-en">English</button>
+                </div>
+            </div>
+
+            <div class="hero-buttons fade-in-up" style="animation-delay: 0.35s">
+                <a href="#services" class="primary-btn pulse-glow" data-i18n="heroBtnServices">View Services</a>
+                <a href="#complaints" class="secondary-btn" data-i18n="heroBtnComplaints">Register Complaint</a>
+            </div>
+        </div>
+
+        <div class="hero-image-wrapper fade-in-right">
+            <div class="image-card">
+                <div class="badge-floating">
+                    <span class="material-icons">verified</span> <span data-i18n="heroBadgeVerified">Digital
+                        Panchayat</span>
+                </div>
+                <!-- Using Gatadwadi Custom Image -->
+                <div class="hero-image-crop">
+                    <img src="../gatadwadi.png" alt="Gatadwadi Grampanchayat" class="hero-image">
+                </div>
+                <div class="image-footer">
+                    <span class="img-caption"><span class="material-icons">eco</span> <span
+                            data-i18n="heroBadgeGreen">Green Gatadwadi</span></span>
+                    <span class="img-caption"><span class="material-icons">architecture</span> <span
+                            data-i18n="heroBadgeSmart">Smart Village</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container glass-card scroll-reveal">
+            <div class="about-content">
+                <div class="card-icon info-icon"
+                    style="background: rgba(101, 163, 13, 0.1); color: var(--button-green); margin-bottom: 1.5rem;">
+                    <span class="material-icons">info</span>
+                </div>
+                <h2 class="section-title" data-i18n="aboutTitle" style="text-align: left; margin-bottom: 1rem;">
+                    About <span class="highlight">Gatadwadi</span></h2>
+                <p class="about-text" data-i18n="aboutDesc">Gatadwadi is a small yet distinct village nestled in the
+                    Walwa tehsil of Sangli district, within the Indian state of Maharashtra. Known for its charm, it
+                    contributes to the cultural and demographic richness of the region.</p>
+            </div>
+
+            <div class="about-stats">
+                <div class="stat-box">
+                    <span class="stat-label" data-i18n="statTalukaLbl">Taluka</span>
+                    <strong class="stat-value" data-i18n="statTalukaVal">Walwa (वाळवा)</strong>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label" data-i18n="statDistLbl">District</span>
+                    <strong class="stat-value" data-i18n="statDistVal">Sangli (सांगली)</strong>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label" data-i18n="statStateLbl">State</span>
+                    <strong class="stat-value" data-i18n="statStateVal">Maharashtra (महाराष्ट्र)</strong>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label" data-i18n="statPopLbl">Total Population</span>
+                    <strong class="stat-value highlight" data-i18n="statPopVal">1,586+</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Board Section -->
+    <section id="notices" class="notices-section">
+        <div class="glass-card notices-container scroll-reveal">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <h2 class="section-title" data-i18n="noticeTitle" style="text-align: left; font-size: 1.8rem;">Gram
+                    Panchayat <span class="highlight" data-i18n="noticeTitleHighlight">Notices</span></h2>
+            </div>
+            <div class="notice-ticker">
+                <ul id="noticeList" class="notice-list">
+                    <!-- Dynamic notices injected by JS -->
+                    <li><span class="material-icons"
+                            style="color: var(--button-green); vertical-align: middle; margin-right: 8px;">campaign</span>
+                        <span data-i18n="loadingNotices">Loading latest updates...</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Bento Grid) -->
+    <section id="services" class="bento-section">
+        <div class="section-header scroll-reveal">
+            <h2 class="section-title" data-i18n="servicesTitle">Online <span class="highlight"
+                    data-i18n="servicesTitleHighlight">Services</span></h2>
+            <p class="section-subtitle" data-i18n="servicesSubtitle">Secure, fast, and transparent fee payments for
+                village facilities.</p>
+        </div>
+
+        <div class="bento-grid">
+            <!-- Water Bill Card -->
+            <div class="bento-card glass-card scroll-reveal" style="transition-delay: 0.1s">
+                <div class="card-icon water-icon">
+                    <span class="material-icons">water_drop</span>
+                </div>
+                <h3 data-i18n="waterBillTitle">Water Bill Payment</h3>
+                <p data-i18n="waterBillDesc">Pay your monthly water maintenance tax quickly. Avoid late fees by
+                    paying
+                    before the 5th of every
+                    month.</p>
+                <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 1rem;"><strong>Step 1:</strong> Enter your house number and amount. <strong>Step 2:</strong> Click "Proceed to Pay".</p>
+                <form id="waterBillForm" class="payment-form">
+                    <div class="input-group">
+                        <label for="waterHouseNo" data-i18n="labelHouseNo">House Number</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">home</span>
+                            <input type="text" id="waterHouseNo" required data-i18n-placeholder="placeholderHouseNo"
+                                placeholder="e.g. 104/A">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="waterAmount" data-i18n="labelAmount">Amount (₹)</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">currency_rupee</span>
+                            <input type="number" id="waterAmount" required placeholder="0.00" min="1">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn solid-btn-green" data-i18n="btnPayNow">Proceed to
+                        Pay</button>
+                </form>
+            </div>
+
+            <!-- Ghar Patti Card -->
+            <div class="bento-card glass-card scroll-reveal" style="transition-delay: 0.3s">
+                <div class="card-icon house-icon">
+                    <span class="material-icons">account_balance</span>
+                </div>
+                <h3 data-i18n="houseBillTitle">Ghar Patti (House Tax)</h3>
+                <p data-i18n="houseBillDesc">Clear your annual house property tax dues to contribute to the
+                    village's
+                    development and
+                    infrastructure.</p>
+                <form id="houseBillForm" class="payment-form">
+                    <div class="input-group">
+                        <label for="houseNo" data-i18n="labelHouseNo2">House Number</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">home</span>
+                            <input type="text" id="houseNo" required data-i18n-placeholder="placeholderHouseNo"
+                                placeholder="e.g. 104/A">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="ownerName" data-i18n="labelOwnerName">Owner Name</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">person</span>
+                            <input type="text" id="ownerName" required data-i18n-placeholder="placeholderFullName"
+                                placeholder="Full Name">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="houseAmount" data-i18n="labelAmount2">Amount (₹)</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">currency_rupee</span>
+                            <input type="number" id="houseAmount" required placeholder="0.00" min="1">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn solid-btn-green" data-i18n="btnPayNow2">Proceed to
+                        Pay</button>
+                </form>
+            </div>
+
+            <!-- Certificate Request Card -->
+            <div class="bento-card glass-card scroll-reveal" style="transition-delay: 0.5s">
+                <div class="card-icon cert-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
+                    <span class="material-icons">card_membership</span>
+                </div>
+                <h3 data-i18n="certTitle">Certificate Requests</h3>
+                <p data-i18n="certDesc">Apply for essential documents like Birth, Marriage, or Income certificates
+                    online without visiting the office.</p>
+                <form id="certForm" class="payment-form">
+                    <div class="input-group">
+                        <label for="certType" data-i18n="labelCertType">Certificate Type</label>
+                        <div class="select-wrapper">
+                            <select id="certType" required>
+                                <option value="" disabled selected data-i18n="certSelect">Select Type</option>
+                                <option value="birth" data-i18n="certBirth">Birth Certificate</option>
+                                <option value="marriage" data-i18n="certMarriage">Marriage Certificate</option>
+                                <option value="income" data-i18n="certIncome">Income Certificate</option>
+                                <option value="domicile" data-i18n="certDomicile">Domicile Certificate</option>
+                            </select>
+                            <span class="material-icons select-icon">expand_more</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="certName" data-i18n="labelApplicantName">Applicant Name</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">person</span>
+                            <input type="text" id="certName" required data-i18n-placeholder="placeholderFullName"
+                                placeholder="Full Name">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn outline-btn-green"
+                        style="border-color: #a855f7; color: #a855f7;" data-i18n="btnApplyCert">Apply Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complaints Section -->
+    <section id="complaints" class="complaints-section">
+        <div class="glass-card complaint-container scroll-reveal">
+            <div class="complaint-header">
+                <div class="card-icon complaint-icon">
+                    <span class="material-icons">support_agent</span>
+                </div>
+                <div>
+                    <h2 class="section-title" data-i18n="complaintsTitle">Support & <span class="highlight"
+                            data-i18n="complaintsTitleHighlight">Complaints</span></h2>
+                    <p class="section-subtitle-small" data-i18n="complaintsSubtitle">Help us improve Gatadwadi by
+                        sharing your concerns. We address
+                        issues within 48 hours.</p>
+                </div>
+            </div>
+
+            <form id="complaintForm" class="complaint-form">
+                <div class="instruction-box">
+                    <div class="instruction-icon">
+                        <span class="material-icons">info</span>
+                    </div>
+                    <div class="instruction-text">
+                        <strong>How to submit a complaint:</strong>
+                        <ol>
+                            <li>Enter your full name and 10-digit phone number</li>
+                            <li>Select the appropriate complaint category</li>
+                            <li>Describe your issue in detail</li>
+                            <li>Click "Submit Complaint" to send</li>
+                        </ol>
+                        <small>We address issues within 48 hours.</small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="complaintName" data-i18n="labelFullName">Full Name</label>
+                        <input type="text" id="complaintName" required data-i18n-placeholder="placeholderYourName"
+                            placeholder="Your Name">
+                    </div>
+                    <div class="input-group">
+                        <label for="complaintPhone" data-i18n="labelPhoneName">Phone Number</label>
+                        <input type="pattern" pattern="[0-9]{10}" id="complaintPhone" required
+                            data-i18n-placeholder="placeholderPhone" placeholder="10-digit mobile number">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="complaintType" data-i18n="labelCategory">Complaint Category</label>
+                    <div class="select-wrapper">
+                        <select id="complaintType" required>
+                            <option value="" disabled selected data-i18n="catSelect">Select Category</option>
+                            <option value="water" data-i18n="catWater">Water Supply Issue</option>
+                            <option value="electricity" data-i18n="catElectricity">Street Lights / Electricity
+                            </option>
+                            <option value="roads" data-i18n="catRoads">Road Maintenance & Potholes</option>
+                            <option value="cleanliness" data-i18n="catClean">Sanitation & Garbage Collection
+                            </option>
+                            <option value="other" data-i18n="catOther">Other Issues</option>
+                        </select>
+                        <span class="material-icons select-icon">expand_more</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="complaintDesc" data-i18n="labelDesc">Detailed Description</label>
+                    <textarea id="complaintDesc" rows="4" required data-i18n-placeholder="placeholderDesc"
+                        placeholder="Describe your issue in detail so we can help faster..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn outline-btn-green" data-i18n="btnSubmitComplaint">Submit
+                    Complaint</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-header scroll-reveal">
+            <h2 class="section-title" data-i18n="galleryTitle">Village <span class="highlight"
+                    data-i18n="galleryTitleHighlight">Gallery</span></h2>
+            <p class="section-subtitle" data-i18n="gallerySubtitle">Glimpses of life, development, and festivals in
+                Gatadwadi.</p>
+        </div>
+        <div class="gallery-grid scroll-reveal">
+            <div class="gallery-item"><img src="../demo.jpg" alt="Village Landscape"></div>
+            <div class="gallery-item wide"><img src="../Gram panchyat1.png" alt="Village Farm"></div>
+            <div class="gallery-item"><img src="../Gram panchyat 2.png" alt="Village School"></div>
+            <div class="gallery-item"><img src="../gatadwadi.png" alt="Village Festival"></div>
+            <div class="gallery-item"><img src="../logo.png" alt="Gram Panchayat Logo"></div>
+        </div>
+    </section>
+
+    <!-- Important Contacts Section -->
+    <section id="contacts" class="contacts-section">
+        <div class="glass-card contacts-container scroll-reveal">
+            <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <h2 class="section-title" data-i18n="contactsTitle" style="font-size: 2rem;">Important <span
+                        class="highlight" data-i18n="contactsTitleHighlight">Contacts</span></h2>
+            </div>
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <span class="material-icons contact-icon">person_pin</span>
+                    <div>
+                        <h4 data-i18n="contactSarpanch">Sarpanch Office</h4>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <span class="material-icons contact-icon">assignment_ind</span>
+                    <div>
+                        <h4 data-i18n="contactGramSevak">Gram Sevak</h4>
+                        <p>+91 91234 56789</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <span class="material-icons contact-icon">local_hospital</span>
+                    <div>
+                        <h4 data-i18n="contactHospital">Primary Health Center</h4>
+                        <p>+91 99887 76655</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <span class="material-icons contact-icon">local_police</span>
+                    <div>
+                        <h4 data-i18n="contactPolice">Police Station (Walwa)</h4>
+                        <p>100 / 02342-221100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../logo.png" alt="Logo">
+                <h3 data-i18n="footerLogoTitle">Gatadwadi <span>Panchayat</span></h3>
+            </div>
+            <p class="copyright">&copy; <span id="year"></span> <span data-i18n="footerCopyright">Digital Gatadwadi.
+                    All
+                    rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <!-- Modal / Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-icon">
+            <span class="material-icons">check_circle</span>
+        </div>
+        <div class="toast-content">
+            <h4 id="toastTitle" data-i18n="toastSuccessTitle">Success!</h4>
+            <p id="toastMessage" data-i18n="toastSuccessMessage">Your request has been processed.</p>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab pulse-glow">
+        <span class="material-icons">chat</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
