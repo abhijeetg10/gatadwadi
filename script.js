@@ -90,7 +90,36 @@ document.addEventListener('DOMContentLoaded', () => {
             contactSarpanch: "Sarpanch Office",
             contactGramSevak: "Gram Sevak",
             contactHospital: "Primary Health Center",
-            contactPolice: "Police Station (Walwa)"
+            contactPolice: "Police Station (Walwa)",
+            navSchemes: "Schemes",
+            trackTitle: "Track <span class='highlight'>Application</span>",
+            trackDesc: "Check the live status of your submitted Complaints or Certificate requests instantly.",
+            btnTrack: "Track",
+            schemesTitle: "Government <span class='highlight'>Schemes</span>",
+            schemesDesc: "Explore various beneficial Yojanas available for the villagers of Gatadwadi.",
+            scheme1Title: "PM Kisan Samman Nidhi",
+            scheme1Desc: "Financial support of ₹6,000 per year in three equal installments to all landholding farmers' families.",
+            scheme2Title: "Ramai Gharkul Yojana",
+            scheme2Desc: "Financial assistance provided by the state government to build pucca houses for the homeless and financially weak families.",
+            scheme3Title: "Mahila Bachat Gat",
+            scheme3Desc: "Empowering women through self-help groups by facilitating microfinance, skill development, and small scale business loans.",
+            btnKnowMore: "Know More",
+            dirTitle: "Gram Panchayat <span class='highlight'>Directory</span>",
+            dirDesc: "Meet the dedicated elected representatives working for Gatadwadi's progress.",
+            dirSarpanchName: "Hon. Sarpanch",
+            dirSarpanchRole: "Sarpanch",
+            dirUpSarpanchName: "Hon. Deputy Sarpanch",
+            dirUpSarpanchRole: "Deputy Sarpanch",
+            dirMembersTitle: "7 Gram Panchayat Members",
+            dirMembersDesc: "Working together across 3 wards for village development.",
+            dirSabhaTitle: "Upcoming Gram Sabha",
+            dirSabhaDateLbl: "Date:",
+            dirSabhaTimeLbl: "Time:",
+            dirSabhaVenueLbl: "Venue:",
+            dirSabhaVenue: "Panchayat Office Hall",
+            sosAmbulance: "Ambulance",
+            sosPolice: "Police",
+            sosFire: "Fire"
         },
         mr: {
             logoTitle: "गाताडवाडी <span>पंचायत</span>",
@@ -176,7 +205,36 @@ document.addEventListener('DOMContentLoaded', () => {
             contactSarpanch: "सरपंच कार्यालय",
             contactGramSevak: "ग्रामसेवक",
             contactHospital: "प्राथमिक आरोग्य केंद्र",
-            contactPolice: "पोलीस स्टेशन (वाळवा)"
+            contactPolice: "पोलीस स्टेशन (वाळवा)",
+            navSchemes: "योजना",
+            trackTitle: "<span class='highlight'>अर्ज</span> ट्रॅक करा",
+            trackDesc: "तुमच्या नोंदणीकृत तक्रारी किंवा प्रमाणपत्र विनंत्यांची सद्यस्थिती त्वरित तपासा.",
+            btnTrack: "ट्रॅक करा",
+            schemesTitle: "सरकारी <span class='highlight'>योजना</span>",
+            schemesDesc: "गाताडवाडीच्या ग्रामस्थांसाठी उपलब्ध असलेल्या विविध उपयुक्त योजनांची माहिती घ्या.",
+            scheme1Title: "पीएम किसान सन्मान निधी",
+            scheme1Desc: "सर्व भूधारक शेतकरी कुटुंबांना तीन समान हप्त्यांमध्ये दरवर्षी ₹६,००० ची आर्थिक मदत.",
+            scheme2Title: "रमाई घरकुल योजना",
+            scheme2Desc: "बेघर आणि आर्थिकदृष्ट्या दुर्बल कुटुंबांना पक्की घरे बांधण्यासाठी राज्य सरकारकडून आर्थिक मदत.",
+            scheme3Title: "महिला बचत गट",
+            scheme3Desc: "सूक्ष्म वित्तपुरवठा, कौशल्य विकास आणि लघु उद्योगांसाठी कर्जे सुलभ करून स्वयंसहायता गटांद्वारे महिलांचे सक्षमीकरण.",
+            btnKnowMore: "अधिक जाणून घ्या",
+            dirTitle: "ग्रामपंचायत <span class='highlight'>माहिती</span>",
+            dirDesc: "गाताडवाडीच्या प्रगतीसाठी काम करणाऱ्या समर्पित लोकप्रतिनिधींना भेटा.",
+            dirSarpanchName: "मा. सरपंच",
+            dirSarpanchRole: "सरपंच",
+            dirUpSarpanchName: "मा. उपसरपंच",
+            dirUpSarpanchRole: "उपसरपंच",
+            dirMembersTitle: "७ ग्रामपंचायत सदस्य",
+            dirMembersDesc: "गावाच्या विकासासाठी ३ प्रभागांमध्ये एकत्र काम करत आहेत.",
+            dirSabhaTitle: "आगामी ग्रामसभा",
+            dirSabhaDateLbl: "दिनांक:",
+            dirSabhaTimeLbl: "वेळ:",
+            dirSabhaVenueLbl: "स्थळ:",
+            dirSabhaVenue: "पंचायत कार्यालय सभागृह",
+            sosAmbulance: "रुग्णवाहिका",
+            sosPolice: "पोलीस",
+            sosFire: "अग्निशमन दला"
         },
         hi: {
             logoTitle: "गाताडवाडी <span>पंचायत</span>",
@@ -262,7 +320,36 @@ document.addEventListener('DOMContentLoaded', () => {
             contactSarpanch: "सरपंच कार्यालय",
             contactGramSevak: "ग्राम सेवक",
             contactHospital: "प्राथमिक स्वास्थ्य केंद्र",
-            contactPolice: "पुलिस स्टेशन (वालवा)"
+            contactPolice: "पुलिस स्टेशन (वालवा)",
+            navSchemes: "योजनाएं",
+            trackTitle: "ट्रैक <span class='highlight'>आवेदन</span>",
+            trackDesc: "अपनी दर्ज की गई शिकायतों या प्रमाणपत्र अनुरोधों की लाइव स्थिति तुरंत देखें।",
+            btnTrack: "ट्रैक करें",
+            schemesTitle: "सरकारी <span class='highlight'>योजनाएं</span>",
+            schemesDesc: "गाताडवाडी के ग्रामीणों के लिए उपलब्ध विभिन्न लाभकारी योजनाओं का अन्वेषण करें।",
+            scheme1Title: "पीएम किसान सम्मान निधि",
+            scheme1Desc: "सभी भूमिधारक किसान परिवारों को तीन समान किश्तों में प्रति वर्ष ₹6,000 की वित्तीय सहायता।",
+            scheme2Title: "रमाई घरकुल योजना",
+            scheme2Desc: "बेघर और आर्थिक रूप से कमजोर परिवारों के लिए पक्के घर बनाने के लिए राज्य सरकार द्वारा प्रदान की जाने वाली वित्तीय सहायता।",
+            scheme3Title: "महिला बचत गट",
+            scheme3Desc: "माइक्रोफाइनेंस, कौशल विकास और छोटे पैमाने के व्यापार ऋण की सुविधा प्रदान करके स्वयं सहायता समूहों के माध्यम से महिलाओं को सशक्त बनाना।",
+            btnKnowMore: "और जानें",
+            dirTitle: "ग्राम पंचायत <span class='highlight'>निर्देशिका</span>",
+            dirDesc: "गाताडवाडी की प्रगति के लिए काम करने वाले समर्पित निर्वाचित प्रतिनिधियों से मिलें।",
+            dirSarpanchName: "माननीय सरपंच",
+            dirSarpanchRole: "सरपंच (Sarpanch)",
+            dirUpSarpanchName: "माननीय उपसरपंच",
+            dirUpSarpanchRole: "उपसरपंच (Deputy Sarpanch)",
+            dirMembersTitle: "7 ग्राम पंचायत सदस्य",
+            dirMembersDesc: "गांव के विकास के लिए 3 वार्डों में एक साथ काम करना।",
+            dirSabhaTitle: "आगामी ग्राम सभा",
+            dirSabhaDateLbl: "दिनांक:",
+            dirSabhaTimeLbl: "समय:",
+            dirSabhaVenueLbl: "स्थान:",
+            dirSabhaVenue: "पंचायत कार्यालय हॉल",
+            sosAmbulance: "एंबुलेंस",
+            sosPolice: "पुलिस",
+            sosFire: "अग्नि शमन"
         }
     };
 
@@ -342,48 +429,90 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 if (formObj.type === 'payment') {
-                    formDataObj.category = formObj.category;
+                    formDataObj.amount = formEl.querySelector('input[type="number"]').value;
                     if (formObj.id === 'waterBillForm') {
                         formDataObj.houseNo = document.getElementById('waterHouseNo').value;
-                        formDataObj.amount = document.getElementById('waterAmount').value;
-                        formDataObj.name = "Resident"; // Not collected in water form
+                        formDataObj.name = document.getElementById('waterName').value;
                     } else if (formObj.id === 'houseBillForm') {
                         formDataObj.houseNo = document.getElementById('houseNo').value;
-                        formDataObj.amount = document.getElementById('houseAmount').value;
                         formDataObj.name = document.getElementById('ownerName').value;
                     }
+                    formDataObj.category = formObj.category;
                     formDataObj.status = 'Paid';
                 } else if (formObj.type === 'complaint') {
                     formDataObj.name = document.getElementById('complaintName').value;
                     formDataObj.phone = document.getElementById('complaintPhone').value;
-                    let typeSel = document.getElementById('complaintType');
-                    formDataObj.category = typeSel.options[typeSel.selectedIndex].text;
-                    formDataObj.description = document.getElementById('complaintDesc').value;
+                    formDataObj.category = document.getElementById('complaintType').value;
+                    formDataObj.desc = document.getElementById('complaintDesc').value;
                 } else if (formObj.type === 'certificate') {
+                    formDataObj.category = document.getElementById('certType').value;
                     formDataObj.name = document.getElementById('certName').value;
-                    let cTypeSel = document.getElementById('certType');
-                    formDataObj.category = cTypeSel.options[cTypeSel.selectedIndex].text;
                 }
 
-                // Simulate API Call & LocalStorage Save
-                setTimeout(() => {
-                    // Save to corresponding array in localStorage
-                    let storageKey = 'gatadwadi_complaints';
-                    if (formObj.type === 'payment') storageKey = 'gatadwadi_payments';
-                    if (formObj.type === 'certificate') storageKey = 'gatadwadi_certificates';
+                // Helper to finalize form submission
+                const finalizeSubmission = (photoDataUrl = null) => {
+                    if (photoDataUrl) {
+                        formDataObj.photo = photoDataUrl;
+                    }
 
-                    let currentData = JSON.parse(localStorage.getItem(storageKey)) || [];
-                    currentData.unshift(formDataObj); // Add to beginning
-                    localStorage.setItem(storageKey, JSON.stringify(currentData));
+                    setTimeout(() => {
+                        // Show Success Toast
+                        showToast(formObj.title, formObj.message);
 
-                    // Reset UI
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
+                        // Reset Form UI
+                        formEl.reset();
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        btn.style.opacity = '1';
 
-                    e.target.reset(); // clear form
-                    showToast(formObj.title, formObj.message);
-                }, 1800);
+                        // Save Data
+                        let targetStorage = 'gatadwadi_' + formObj.type + 's';
+                        let existingData = JSON.parse(localStorage.getItem(targetStorage)) || [];
+                        existingData.unshift(formDataObj); // Add to beginning
+                        localStorage.setItem(targetStorage, JSON.stringify(existingData));
+
+                        // Redirect for Payments
+                        if (formObj.type === 'payment') {
+                            const upiId = '9028596505-2@ybl';
+                            const amount = formDataObj.amount;
+                            const payeeName = "Gram Panchayat";
+                            const transactionNote = encodeURIComponent(`Payment for ${formDataObj.category} House No ${formDataObj.houseNo}`);
+
+                            const upiUrl = `upi://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR&tn=${transactionNote}`;
+
+                            setTimeout(() => {
+                                window.location.href = upiUrl;
+                            }, 1500);
+                        }
+
+                    }, 1500);
+                };
+
+                // Check for photo upload in complaints
+                if (formObj.type === 'complaint') {
+                    const photoInput = document.getElementById('complaintPhoto');
+                    if (photoInput && photoInput.files && photoInput.files[0]) {
+                        const file = photoInput.files[0];
+                        // Optional: Validate size (2MB max)
+                        if (file.size > 2 * 1024 * 1024) {
+                            alert("Photo size must be less than 2MB.");
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                            btn.style.opacity = '1';
+                            return;
+                        }
+                        const reader = new FileReader();
+                        reader.onload = function (evt) {
+                            finalizeSubmission(evt.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        finalizeSubmission(); // No photo
+                    }
+                } else {
+                    finalizeSubmission(); // Payments and Certificates
+                }
+
             });
         }
     });
@@ -503,6 +632,74 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     renderNotices();
+
+    // Application Status Tracker Logic
+    const trackForm = document.getElementById('trackForm');
+    const trackResult = document.getElementById('trackResult');
+
+    if (trackForm && trackResult) {
+        trackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const trackId = document.getElementById('trackId').value.trim();
+            if (!trackId) return;
+
+            const submitBtn = trackForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="material-icons rotating">autorenew</span>';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                let foundRecord = null;
+                let recordType = '';
+
+                // Search Complaints
+                const complaints = JSON.parse(localStorage.getItem('gatadwadi_complaints')) || [];
+                foundRecord = complaints.find(c => c.id === trackId);
+                if (foundRecord) recordType = 'Complaint';
+
+                // Search Certificates if not found in Complaints
+                if (!foundRecord) {
+                    const certs = JSON.parse(localStorage.getItem('gatadwadi_certificates')) || [];
+                    foundRecord = certs.find(c => c.id === trackId);
+                    if (foundRecord) recordType = 'Certificate';
+                }
+
+                // Also search Payments just in case user tracks payment
+                if (!foundRecord) {
+                    const payments = JSON.parse(localStorage.getItem('gatadwadi_payments')) || [];
+                    foundRecord = payments.find(c => c.id === trackId);
+                    if (foundRecord) recordType = 'Payment';
+                }
+
+                if (foundRecord) {
+                    document.getElementById('trackTypeResult').textContent = recordType + ` (${foundRecord.category || '-'})`;
+                    document.getElementById('trackNameResult').textContent = foundRecord.name || 'Resident';
+
+                    const badge = document.getElementById('trackStatusBadge');
+                    badge.textContent = foundRecord.status;
+
+                    // Reset classes
+                    badge.className = 'badge';
+                    if (foundRecord.status === 'Solved' || foundRecord.status === 'Approved' || foundRecord.status === 'Paid') {
+                        badge.classList.add('solved');
+                    } else if (foundRecord.status === 'Pending') {
+                        badge.classList.add('pending');
+                    } else if (foundRecord.status === 'Rejected') {
+                        badge.classList.add('rejected');
+                    }
+
+                    trackResult.classList.remove('hidden');
+                } else {
+                    showToast('Not Found', 'No application found with ID: ' + trackId);
+                    trackResult.classList.add('hidden');
+                }
+
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 800);
+        });
+    }
+
 });
 
 // Polyfill keyframes for the rotating icon in script

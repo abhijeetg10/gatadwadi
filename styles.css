@@ -392,6 +392,7 @@ nav a.active {
 .about-container {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row !important;
     gap: 3rem;
     padding: 3rem;
     align-items: center;
@@ -428,6 +429,99 @@ nav a.active {
     box-shadow: 0 10px 25px rgba(101, 163, 13, 0.1);
     background: white;
 }
+
+/* --- Government Schemes & Directory --- */
+.schemes-section,
+.directory-section {
+    position: relative;
+    z-index: 1;
+}
+
+.scheme-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scheme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.directory-grid .member-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.directory-grid .member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Advanced Floating Action Button (SOS) --- */
+.fab-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.fab-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fab-container:hover .fab-options,
+.fab-container.active .fab-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.fab-options li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fab-label {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+}
+
+.fab-option {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+}
+
+.fab-option:hover {
+    transform: scale(1.1);
+}
+
 
 .stat-label {
     display: block;
@@ -477,7 +571,7 @@ nav a.active {
 
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
     max-width: 1100px;
     margin: 0 auto;
@@ -490,6 +584,12 @@ nav a.active {
     padding: 2.8rem 2.5rem;
     box-shadow: 0 10px 40px rgba(101, 163, 13, 0.05);
     transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.glass-card>form {
+    margin-top: auto;
 }
 
 .glass-card:hover {

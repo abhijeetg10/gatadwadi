@@ -131,9 +131,14 @@
 
             <!-- Complaints Pipeline -->
             <div class="dashboard-panel glass-card" id="complaints">
-                <div class="panel-header">
+                <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
                     <h3>Recent Complaints</h3>
-                    <a href="#" class="view-all">View All</a>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="outline-btn-green" onclick="exportData('complaints')"
+                            style="padding: 4px 10px; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;"><span
+                                class="material-icons" style="font-size: 1rem;">download</span> Export CSV</button>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
                 </div>
                 <div class="table-container">
                     <table class="admin-table">
@@ -161,9 +166,14 @@
 
             <!-- Recent Payments -->
             <div class="dashboard-panel glass-card" id="payments">
-                <div class="panel-header">
+                <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
                     <h3>Latest Payments</h3>
-                    <a href="#" class="view-all">View All</a>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="outline-btn-green" onclick="exportData('payments')"
+                            style="padding: 4px 10px; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;"><span
+                                class="material-icons" style="font-size: 1rem;">download</span> Export CSV</button>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
                 </div>
                 <div class="table-container">
                     <table class="admin-table">
@@ -191,8 +201,11 @@
 
             <!-- Certificate Requests Pipeline -->
             <div class="dashboard-panel glass-card" id="certificates">
-                <div class="panel-header">
+                <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
                     <h3>Certificate Approvals</h3>
+                    <button class="outline-btn-green" onclick="exportData('certificates')"
+                        style="padding: 4px 10px; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;"><span
+                            class="material-icons" style="font-size: 1rem;">download</span> Export CSV</button>
                 </div>
                 <div class="table-container">
                     <table class="admin-table">
@@ -251,10 +264,33 @@
             </div>
 
         </div>
+<br><br>
+        <!-- Edit Modal -->
+        <div id="editModal" class="modal hidden">
+            <div class="modal-content glass-card">
+                <h3>Edit Record</h3>
+                <form id="editForm">
+                    <input type="hidden" id="editIndex">
+                    <input type="hidden" id="editType">
+                    <div class="input-group">
+                        <label>Name / Applicant</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="input-group" id="editPhoneGroup" style="display:none;">
+                        <label>Phone / Details</label>
+                        <input type="text" id="editPhone">
+                    </div>
+                    <!-- Amount purposefully omitted to prevent editing -->
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button type="button" class="action-btn" onclick="closeEditModal()"
+                            style="flex:1;">Cancel</button>
+                        <button type="submit" class="submit-btn solid-btn-green" style="flex:1;">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-    </main>
-
-    <script src="admin.js"></script>
+        <script src="admin.js"></script>
 </body>
 
 </html>

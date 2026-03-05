@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         emptyState.classList.add('hidden');
-        payments.forEach(p => {
+        payments.forEach((p, index) => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><strong>${p.id}</strong></td>
@@ -70,6 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${p.category}</td>
                 <td><strong>₹ ${parseFloat(p.amount).toLocaleString('en-IN')}</strong></td>
                 <td><span class="badge paid">Paid</span></td>
+                <td>
+                    <button class="action-btn outline-btn-green" onclick="openEditModal(${index}, 'payments')" style="padding: 4px 8px; font-size: 0.8rem; border-radius:4px;"><span class="material-icons" style="font-size: 1rem; vertical-align: middle;">edit</span></button>
+                    <button class="action-btn" onclick="deleteRecord(${index}, 'payments')" style="padding: 4px 8px; font-size: 0.8rem; border-radius:4px; border: 1px solid #ef4444; color: #ef4444;"><span class="material-icons" style="font-size: 1rem; vertical-align: middle;">delete</span></button>
+                </td>
             `;
             tBody.appendChild(tr);
         });
@@ -97,9 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td><strong>${c.id}</strong></td>
                 <td>${c.date}<br><span style="font-size: 0.8em; color: gray;">${c.time}</span></td>
                 <td>${c.name} <br><span style="font-size: 0.85em; color: gray;">📞 ${c.phone}</span></td>
-                <td>${c.category}</td>
+                <td>
+                    ${c.category}
+                    ${c.photo ? `<br><a href="${c.photo}" target="_blank" style="font-size: 0.8rem; color: #3b82f6; text-decoration: underline; display: flex; align-items: center; gap: 2px; margin-top: 4px;"><span class="material-icons" style="font-size: 14px;">image</span> View Photo</a>` : ''}
+                </td>
                 <td><span class="badge ${badgeClass}">${c.status}</span></td>
-                <td><button class="action-btn toggle-status" data-index="${index}">${btnText}</button></td>
+                <td style="display:flex; gap: 4px; align-items:center;">
+                    <button class="action-btn toggle-status" data-index="${index}">${btnText}</button>
+                    <button class="action-btn outline-btn-green" onclick="openEditModal(${index}, 'complaints')" style="padding: 4px 8px; font-size: 0.8rem; border-radius:4px;"><span class="material-icons" style="font-size: 1rem; vertical-align: middle;">edit</span></button>
+                    <button class="action-btn" onclick="deleteRecord(${index}, 'complaints')" style="padding: 4px 8px; font-size: 0.8rem; border-radius:4px; border: 1px solid #ef4444; color: #ef4444;"><span class="material-icons" style="font-size: 1rem; vertical-align: middle;">delete</span></button>
+                </td>
             `;
             tBody.appendChild(tr);
         });
@@ -138,12 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${c.name}</td>
                 <td>${c.category}</td>
                 <td><span class="badge ${badgeClass}">${c.status}</span></td>
-                <td>
+                <td style="display:flex; gap: 4px; align-items:center;">
                     <select class="action-btn toggle-cert-status" data-index="${index}" style="padding:4px; border-radius:4px; font-size:0.8rem;">
                         <option value="Pending" ${c.status === 'Pending' ? 'selected' : ''}>Pending</option>
                         <option value="Approved" ${c.status === 'Approved' ? 'selected' : ''}>Approved</option>
                         <option value="Rejected" ${c.status === 'Rejected' ? 'selected' : ''}>Rejected</option>
                     </select>
+                    <button class="action-btn outline-btn-green" onclick="openEditModal(${index}, 'certificates')" style="padding: 4px 8px; font-size: 0.8rem; border-radius:4px;"><span class="material-icons" style="font-size: 1rem; vertical-align: middle;">edit</span></button>
+                    <button class="action-btn" onclick="deleteRecord(${index}, 'certificates')" style="padding: 4px 8px; font-size: 0.8rem; border-radius:4px; border: 1px solid #ef4444; color: #ef4444;"><span class="material-icons" style="font-size: 1rem; vertical-align: middle;">delete</span></button>
                 </td>
             `;
             tBody.appendChild(tr);
@@ -339,5 +352,138 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    renderCharts();
+    // 8. Edit & Delete Logic
+    window.deleteRecord = (index, type) => {
+        if (!confirm('Are you sure you want to permanently delete this record?')) return;
+
+        let targetArray;
+        let storageKey;
+        if (type === 'payments') { targetArray = payments; storageKey = 'gatadwadi_payments'; }
+        if (type === 'complaints') { targetArray = complaints; storageKey = 'gatadwadi_complaints'; }
+        if (type === 'certificates') { targetArray = certificates; storageKey = 'gatadwadi_certificates'; }
+
+        if (targetArray) {
+            targetArray.splice(index, 1);
+            localStorage.setItem(storageKey, JSON.stringify(targetArray));
+
+            // Re-render appropriate table
+            if (type === 'payments') renderPayments();
+            if (type === 'complaints') renderComplaints();
+            if (type === 'certificates') renderCertificates();
+
+            renderCharts(); // update charts
+        }
+    };
+
+    const editModal = document.getElementById('editModal');
+    const editForm = document.getElementById('editForm');
+
+    window.openEditModal = (index, type) => {
+        document.getElementById('editIndex').value = index;
+        document.getElementById('editType').value = type;
+
+        const phoneGroup = document.getElementById('editPhoneGroup');
+        const phoneInput = document.getElementById('editPhone');
+        const nameInput = document.getElementById('editName');
+
+        let dataObj;
+        if (type === 'payments') dataObj = payments[index];
+        if (type === 'complaints') dataObj = complaints[index];
+        if (type === 'certificates') dataObj = certificates[index];
+
+        nameInput.value = dataObj.name;
+
+        // Show phone input ONLY for complaints (or house no for payments)
+        if (type === 'complaints') {
+            phoneGroup.style.display = 'block';
+            phoneGroup.querySelector('label').textContent = 'Phone Number';
+            phoneInput.value = dataObj.phone;
+        } else if (type === 'payments') {
+            phoneGroup.style.display = 'block';
+            phoneGroup.querySelector('label').textContent = 'House No.';
+            phoneInput.value = dataObj.houseNo;
+        } else {
+            phoneGroup.style.display = 'none';
+        }
+
+        editModal.classList.remove('hidden');
+    };
+
+    window.closeEditModal = () => {
+        editModal.classList.add('hidden');
+        editForm.reset();
+    };
+
+    if (editForm) {
+        editForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const index = document.getElementById('editIndex').value;
+            const type = document.getElementById('editType').value;
+            const newName = document.getElementById('editName').value;
+            const newPhoneOrHouse = document.getElementById('editPhone').value;
+
+            if (type === 'payments') {
+                payments[index].name = newName;
+                payments[index].houseNo = newPhoneOrHouse;
+                localStorage.setItem('gatadwadi_payments', JSON.stringify(payments));
+                renderPayments();
+            } else if (type === 'complaints') {
+                complaints[index].name = newName;
+                complaints[index].phone = newPhoneOrHouse;
+                localStorage.setItem('gatadwadi_complaints', JSON.stringify(complaints));
+                renderComplaints();
+            } else if (type === 'certificates') {
+                certificates[index].name = newName;
+                localStorage.setItem('gatadwadi_certificates', JSON.stringify(certificates));
+                renderCertificates();
+            }
+
+            closeEditModal();
+        });
+    }
+
+    // 9. Export to CSV Logic
+    window.exportData = (type) => {
+        let data = [];
+        let filename = `${type}_export_${new Date().toLocaleDateString('en-GB').replace(/\//g, '-')}.csv`;
+
+        if (type === 'payments') data = payments;
+        else if (type === 'complaints') data = complaints;
+        else if (type === 'certificates') data = certificates;
+
+        if (!data || data.length === 0) {
+            alert('No data available to export for ' + type);
+            return;
+        }
+
+        // Get headers from first object keys
+        const headers = Object.keys(data[0]);
+
+        // Build CSV string
+        let csvContent = headers.join(',') + '\n';
+
+        data.forEach(row => {
+            let rowData = headers.map(header => {
+                let cell = row[header] === null || row[header] === undefined ? '' : String(row[header]);
+                // Escape quotes and wrap in quotes if there are commas
+                cell = cell.replace(/"/g, '""');
+                if (cell.search(/("|,|\n)/g) >= 0) cell = `"${cell}"`;
+                return cell;
+            });
+            csvContent += rowData.join(',') + '\n';
+        });
+
+        // Trigger Download
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+
+        link.setAttribute("href", url);
+        link.setAttribute("download", filename);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
 });
