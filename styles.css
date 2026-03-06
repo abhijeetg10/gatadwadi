@@ -997,6 +997,10 @@ textarea {
     transform: scale(1.1);
 }
 
+.whatsapp-fab:hover {
+    transform: scale(1.1) !important;
+}
+
 .fab .material-icons {
     font-size: 28px;
 }
@@ -1047,6 +1051,11 @@ textarea {
     font-size: 0.9rem;
 }
 
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     .hero {
@@ -1090,5 +1099,15 @@ textarea {
         right: 1.5rem;
         height: 50px;
         width: 50px;
+    }
+
+    /* Mobile Responsive Grid Fixes */
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .glass-card {
+        padding: 2rem 1.5rem;
     }
 }

@@ -456,36 +456,93 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     setTimeout(() => {
-                        // Show Success Toast
-                        showToast(formObj.title, formObj.message);
-
-                        // Reset Form UI
-                        formEl.reset();
-                        btn.innerHTML = originalText;
-                        btn.disabled = false;
-                        btn.style.opacity = '1';
-
-                        // Save Data
-                        let targetStorage = 'gatadwadi_' + formObj.type + 's';
-                        let existingData = JSON.parse(localStorage.getItem(targetStorage)) || [];
-                        existingData.unshift(formDataObj); // Add to beginning
-                        localStorage.setItem(targetStorage, JSON.stringify(existingData));
-
-                        // Redirect for Payments
+                        // Redirect for Payments using new Modal
                         if (formObj.type === 'payment') {
-                            const upiId = '9028596505-2@ybl';
-                            const amount = formDataObj.amount;
+                            const modal = document.getElementById('paymentModal');
+                            const amountDisplay = document.getElementById('paymentModalAmount');
+                            const qrImage = document.getElementById('paymentModalQR');
+
+                            // Define distinct QR codes depending on bill type
+                            const isWater = formObj.id === 'waterBillForm';
+                            const qrSource = isWater ? 'images/panipatti.jpeg' : 'images/gharpati.jpeg';
+                            const uniqueUpiId = isWater ? 'water_payment@upi' : 'house_tax@upi'; // Replace with real IDs if provided later
+
+                            amountDisplay.innerText = `₹ ${formDataObj.amount}`;
+                            qrImage.src = qrSource;
+
+                            // Setup Deep Links
                             const payeeName = "Gram Panchayat";
                             const transactionNote = encodeURIComponent(`Payment for ${formDataObj.category} House No ${formDataObj.houseNo}`);
+                            const upiUrl = `upi://pay?pa=${uniqueUpiId}&pn=${payeeName}&am=${formDataObj.amount}&cu=INR&tn=${transactionNote}`;
 
-                            const upiUrl = `upi://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR&tn=${transactionNote}`;
+                            document.getElementById('btnGpay').onclick = () => window.location.href = `tez://upi/pay?pa=${uniqueUpiId}&pn=${payeeName}&am=${formDataObj.amount}&cu=INR&tn=${transactionNote}`;
+                            document.getElementById('btnPhonepe').onclick = () => window.location.href = `phonepe://pay?pa=${uniqueUpiId}&pn=${payeeName}&am=${formDataObj.amount}&cu=INR&tn=${transactionNote}`;
+                            document.getElementById('btnPaytm').onclick = () => window.location.href = `paytmmp://pay?pa=${uniqueUpiId}&pn=${payeeName}&am=${formDataObj.amount}&cu=INR&tn=${transactionNote}`;
 
+                            // Show the Modal
+                            modal.classList.remove('hidden');
                             setTimeout(() => {
-                                window.location.href = upiUrl;
-                            }, 1500);
-                        }
+                                modal.style.opacity = '1';
+                                modal.querySelector('.modal-content').style.transform = 'translateY(0)';
+                            }, 10);
 
-                    }, 1500);
+                            // Handle manual confirmation
+                            document.getElementById('btnConfirmPayment').onclick = () => {
+                                modal.style.opacity = '0';
+                                modal.querySelector('.modal-content').style.transform = 'translateY(20px)';
+                                setTimeout(() => modal.classList.add('hidden'), 300);
+
+                                // Show Success Toast
+                                showToast(formObj.title, formObj.message);
+
+                                // Reset Form and Save
+                                formEl.reset();
+                                btn.innerHTML = originalText;
+                                btn.disabled = false;
+                                btn.style.opacity = '1';
+
+                                let targetStorage = 'gatadwadi_payments';
+                                let existingData = JSON.parse(localStorage.getItem(targetStorage)) || [];
+                                existingData.unshift(formDataObj);
+                                localStorage.setItem(targetStorage, JSON.stringify(existingData));
+                            };
+
+                            // Close Modal handler (X button)
+                            document.getElementById('closePaymentModal').onclick = () => {
+                                modal.style.opacity = '0';
+                                modal.querySelector('.modal-content').style.transform = 'translateY(20px)';
+                                setTimeout(() => modal.classList.add('hidden'), 300);
+                                btn.innerHTML = originalText;
+                                btn.disabled = false;
+                                btn.style.opacity = '1';
+                            }
+
+                            // Close Modal when clicking outside the content
+                            modal.onclick = (e) => {
+                                if (e.target === modal) {
+                                    modal.style.opacity = '0';
+                                    modal.querySelector('.modal-content').style.transform = 'translateY(20px)';
+                                    setTimeout(() => modal.classList.add('hidden'), 300);
+                                    btn.innerHTML = originalText;
+                                    btn.disabled = false;
+                                    btn.style.opacity = '1';
+                                }
+                            };
+
+                        } else {
+                            // Non-payment flow (Complaints, Certificates)
+                            showToast(formObj.title, formObj.message);
+                            formEl.reset();
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                            btn.style.opacity = '1';
+
+                            let targetStorage = 'gatadwadi_' + formObj.type + 's';
+                            let existingData = JSON.parse(localStorage.getItem(targetStorage)) || [];
+                            existingData.unshift(formDataObj); // Add to beginning
+                            localStorage.setItem(targetStorage, JSON.stringify(existingData));
+                        }
+                    }, 1000);
                 };
 
                 // Check for photo upload in complaints
